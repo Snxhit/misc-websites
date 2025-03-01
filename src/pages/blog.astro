@@ -1,5 +1,5 @@
 ---
-
+const title = "The Blog Page";
 ---
 
 <html lang="en">
@@ -8,12 +8,19 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Build A Blog - Blogs</title>
+    <title>Build A Blog - {title}</title>
 	</head>
 	<body>
     <a href="/">Home Page</a>
     <a href="/about">About Page</a>
     <a href="/blog">Blogs Page</a>
-		<h1>This page contains all the blogs.</h1>
+    <h1>{title}</h1>
+		<h2>This page contains all the blogs.</h2>
+    <p>Below is a list of all blogs posted till date, in chronological order!</p>
+    <ol>
+      <li><a href="posts/post-1">Post 1 - My First Ever Blog!</a></li>
+      <li><a href="posts/post-2">Post 2 - Update, a week later...</a></li>
+      <li><a href="posts/post-3">Post 3 - My journey so far.</a></li>
+    </ol>
 	</body>
 </html>
