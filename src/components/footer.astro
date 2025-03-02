@@ -1,0 +1,22 @@
+---
+
+import Socials from '../components/socials.astro';
+
+const platform = "github";
+const username = "snxhit";
+---
+
+<footer>
+  <p>Learn more about my projects on: <a href={`https://www.${platform}.com/${username}`}>{platform}</a>!</p>
+  <Socials platform="github" username="snxhit" />
+  <Socials platform="youtube" username="@snxhit" />
+</footer>
+
+<style>
+  footer
+  {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>

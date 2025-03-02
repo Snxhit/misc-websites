@@ -1,5 +1,7 @@
 ---
-
+import Footer from '../components/footer.astro';
+import Header from '../components/header.astro';
+import Navbar from '../components/navigation.astro';
 import '../styles/global.css';
 
 const title = "The Blog Page"
@@ -14,9 +16,7 @@ const title = "The Blog Page"
     <title>Build A Blog - {title}</title>
 	</head>
 	<body>
-    <a href="/">Home Page</a>
-    <a href="/about">About Page</a>
-    <a href="/blog">Blogs Page</a>
+    <Header />
     <h1>{title}</h1>
 		<h2>This page contains all the blogs.</h2>
     <p>Below is a list of all blogs posted till date, in chronological order!</p>
@@ -25,5 +25,10 @@ const title = "The Blog Page"
       <li><a href="/posts/post-2/">Post 2 - Update, a week later...</a></li>
       <li><a href="/posts/post-3/">Post 3 - My journey so far.</a></li>
     </ol>
+    <Footer />
+
+    <script>
+      import '../scripts/menu.js';
+    </script>
 	</body>
 </html>
