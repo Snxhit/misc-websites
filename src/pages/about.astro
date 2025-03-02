@@ -13,9 +13,14 @@ const identity =
 const happy = false;
 const finishedWithTutorial = false;
 const goal = 3;
+
+const skillColor = "navy";
+const skillWeight = "bold";
+const skillCase = "upperCase";
 ---
 
 <html lang="en">
+
   <head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -23,17 +28,36 @@ const goal = 3;
 		<meta name="generator" content={Astro.generator} />
     <title>Build A Blog - {title}</title>
 	</head>
+
 	<body>
-    <a href="/">Home Page</a>
+
+    <style define:vars={{ skillColor, skillWeight, skillCase }}>
+      h1
+      {
+        color: purple;
+        font-size: 4rem;
+      }
+      .skill
+      {
+        color: var(--skillColor);
+        font-weight: var(--skillWeight);
+        text-transform: var(--skillCase);
+      }
+    </style>
+
     <a href="/about">About Page</a>
+    <a href="/">Home Page</a>
     <a href="/blog">Blogs Page</a>
+
     <h1>{title}</h1>
     <h3>And this website!</h3>
+
     <p>This website is a tutorial I'm working on, to learn more about Astro.</p>
     {happy && <p>I am happy right now :)</p>}
     {finishedWithTutorial && <p>I am done with the Astro tutorial!</p>}
     {goal === 3 ? <p>My goal is to finish in three days!</p> : <p>My goal is not three days.</p>}
     <p>Here are a few facts about me for now:</p>
+
     <ul>
       <li>My name is {identity.firstName}.</li>
       <li>I live in {identity.country}, and am currently a {identity.occupation}!</li>
@@ -41,9 +65,11 @@ const goal = 3;
         <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</li>
       }
     </ul>
+
     <p>My technical skills are:</p>
     <ol>
-      {identity.skills.map((skill) => <li>{skill}</li>)}
+      {identity.skills.map((skill) => <li class="skill">{skill}</li>)}
     </ol>
+
 	</body>
 </html>
