@@ -1,5 +1,6 @@
 ---
 
+import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/navigation.astro';
 import Header from '../components/header.astro';
 import Footer from '../components/footer.astro';
@@ -25,19 +26,8 @@ const skillWeight = "bold";
 const skillCase = "upperCase";
 ---
 
-<html lang="en">
-
-  <head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-    <title>Build A Blog - {title}</title>
-	</head>
-
-	<body>
-
-    <style define:vars={{ skillColor, skillWeight, skillCase }}>
+<BaseLayout title={title}>
+  <style is:global define:vars={{ skillColor, skillWeight, skillCase }}>
       h1
       {
         color: purple;
@@ -49,36 +39,25 @@ const skillCase = "upperCase";
         font-weight: var(--skillWeight);
         text-transform: var(--skillCase);
       }
-    </style>
+  </style>
+  <h3>And this website!</h3>
 
-    <Header />
+  <p>This website is a tutorial I'm working on, to learn more about Astro.</p>
+  {happy && <p>I am happy right now :)</p>}
+  {finishedWithTutorial && <p>I am done with the Astro tutorial!</p>}
+  {goal === 3 ? <p>My goal is to finish in three days!</p> : <p>My goal is not three days.</p>}
+  <p>Here are a few facts about me for now:</p>
 
-    <h1>{title}</h1>
-    <h3>And this website!</h3>
+  <ul>
+    <li>My name is {identity.firstName}.</li>
+    <li>I live in {identity.country}, and am currently a {identity.occupation}!</li>
+    {identity.hobbies.length >= 2 &&
+      <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</li>
+    }
+  </ul>
 
-    <p>This website is a tutorial I'm working on, to learn more about Astro.</p>
-    {happy && <p>I am happy right now :)</p>}
-    {finishedWithTutorial && <p>I am done with the Astro tutorial!</p>}
-    {goal === 3 ? <p>My goal is to finish in three days!</p> : <p>My goal is not three days.</p>}
-    <p>Here are a few facts about me for now:</p>
-
-    <ul>
-      <li>My name is {identity.firstName}.</li>
-      <li>I live in {identity.country}, and am currently a {identity.occupation}!</li>
-      {identity.hobbies.length >= 2 &&
-        <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</li>
-      }
-    </ul>
-
-    <p>My technical skills are:</p>
-    <ol>
-      {identity.skills.map((skill) => <li class="skill">{skill}</li>)}
-    </ol>
-
-    <Footer />
-
-    <script>
-      import '../scripts/menu.js';
-    </script>
-	</body>
-</html>
+  <p>My technical skills are:</p>
+  <ol>
+    {identity.skills.map((skill) => <li class="skill">{skill}</li>)}
+  </ol>
+</BaseLayout>
